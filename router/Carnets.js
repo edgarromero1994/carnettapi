@@ -34,10 +34,13 @@ router.get("/carnet", async(req, res)=>{
 
     const fechaNacimiento = parseISO(nacimiento);
     const edad = differenceInYears(new Date(), fechaNacimiento);
-
+    let aprobado;
     if (edad <= 17) {
-      return res.status(400).send('Debes ser mayor de 17 años para registrarte');
+      aprobado = 'No Aprobado';
+    } else {
+      aprobado = 'Aprobado';
     }
+
     const numcarnet = generateCarnetNumber(genero); // Generar número de carnet
 
     const nuevoCarnet = new Carnet({
@@ -51,6 +54,7 @@ router.get("/carnet", async(req, res)=>{
       telefono,
       edad:edad,
       numcarnet:numcarnet,
+      aprobado:aprobado,
       fecha: new Date(), // Fecha actual
       fechaconcurso: calculateFechaConcurso(numcarnet, poesia), // Calcular fecha de concurso
     });

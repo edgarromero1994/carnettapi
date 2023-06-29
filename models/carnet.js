@@ -50,6 +50,10 @@ const carnetSchema = new Schema({
       nacimiento: {
         type: String,
         required: true
+      },
+      aprobado: {
+        type: String,
+        required: true
       }
   }, { collection: 'carnet' });
 
