@@ -11,6 +11,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'carnetui/build')));
 app.use(cors());
 
+//
+const { Octokit } = require("octokit");
+
+const octokit = new Octokit();
+
+app.get('/api/github', function (req, res) {
+  octokit.request('GET /repos/{owner}/{repo}', {
+    owner: 'carnettapi',
+    repo: 'edgarromero1994'
+  })
+    .then(response => {
+      const data = response.data;
+      res.json(data);
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Error al obtener los datos desde GitHub');
+    });
+});
+
 // Conexión a la base de datos
 const user = "edgar94";
 const password = "oLbVSOWQiWOiZcmk";
