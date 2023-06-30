@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'carnetui/build')));
 app.use(cors());
 
 // Conexión a la base de datos
