@@ -24,6 +24,25 @@ mongoose.connect(uri, {
   .then(() => console.log("Base de datos conectada"))
   .catch(error => console.log("Error en la conexión a la base de datos:", error));
 
+
+  // Ruta para obtener datos desde tu aplicación React en Netlify
+app.get('/api/data', function (req, res) {
+  // Hacer una solicitud GET a tu aplicación React.js en Netlify
+  axios.get('https://649d9acd32317316be542c53--jocular-phoenix-52390f.netlify.app/api/data')
+    .then(response => {
+      // Obtener los datos de la respuesta de la solicitud a tu aplicación React.js
+      const data = response.data;
+
+      // Enviar los datos como respuesta desde tu servidor Node.js
+      res.json(data);
+    })
+    .catch(error => {
+      // Manejar cualquier error de la solicitud a tu aplicación React.js
+      console.error(error);
+      res.status(500).send('Error al obtener los datos desde la aplicación React');
+    });
+});
+
 // Rutas
 app.use("/", require("./router/Carnets"));
 

@@ -2,28 +2,32 @@
   "name": "carnetapi",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --omit=dev"
-
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edgarromero1994/carnetapi.git"
+    "url": "git+https://github.com/edgarromero1994/carnettapi.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edgarromero1994/carnetapi/issues"
+    "url": "https://github.com/edgarromero1994/carnettapi/issues"
   },
-  "homepage": "https://github.com/edgarromero1994/carnetapi#readme",
+  "homepage": "https://github.com/edgarromero1994/carnettapi#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
   "dependencies": {
+    "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "date-fns": "^2.30.0",
     "express": "^4.18.2",
     "mongoose": "^7.3.1",
-    "nodemon": "^2.0.22"
+    "path": "^0.12.7"
   }
 }
